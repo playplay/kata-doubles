@@ -2,6 +2,10 @@
 
 This application shows how a cook can bake different kind of food using an oven.
 
+For instance, you can order "une tartine aux poivrons".
+
+>⚙️ Order "une tartine" by running the command `./prepareTartineAuPoivron`.
+
 In out kitchen we use an oven named [Kulinarisk](../vendor/akei/kulinarisk/Kulinarisk.php) from AKEI, the well known Swedish company.
 Our cook is well-used to it as you can see [in the tests](../tests/CuisinierTest.php).
 

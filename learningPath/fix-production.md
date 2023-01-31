@@ -11,6 +11,7 @@
 <details>
   <summary>Answer</summary>
 The answer is 4: 2 in the Cuisinier class and 2 in the tests.
+The `./prepareTartineAuPoivron` command doesn't need any change.
 </details>
 
 Let's be nice to our cook and fix the problem before starting the next serving. We will go back to the previous Kulinarisk version. This will be quicker than editing the code and all the tests.

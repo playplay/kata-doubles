@@ -12,6 +12,8 @@ But there is only one truth, and it's production:
 
 Since the upgrade of the Kulinarisk to the new version the cook is not able to use the oven. He complains that the oven doesn't work as it used to.
 
+>⚙️ Try to order "une tartine" again with ` ./prepareTartineAuPoivron`
+
 > ❓️ Have a look at the [Kulinarisk changelog](./../vendor/akei/kulinarisk/Upgrade.md). What do you notice?
 
 [Next ➡️](./fix-production.md)
