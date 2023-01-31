@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BurritoFactory\Ingredients;
 
-final class PainGrillé
+final class PainGrillé extends Pain
 {
 
 }

@@ -1,0 +1,29 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use AKEI\Kulinarisk;
+use BurritoFactory\Cuisine;
+use BurritoFactory\Cuisinier;
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$kulinarisk = new Kulinarisk();
+
+$cuisinier = new Cuisinier($kulinarisk);
+
+$cuisine = new Cuisine($cuisinier);
+
+$tartineAuPoivron = $cuisine->prépareTartineAuPoivron();
+
+$message = <<<MESSAGE
+⏲  C'est prêt ! ⏲ 
+Il y a 
+{$tartineAuPoivron}
+dans le four !
+MESSAGE;
+
+echo $message;
+
+

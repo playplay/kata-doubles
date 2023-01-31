@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace BurritoFactory\Ingredients;
 
-final class Pain
+class Pain
 {
-    public function cuireAvec(\AKEI\Kulinarisk $kulinarisk, int $durée)
+    public function dépose($ingredient): Tartine
     {
-        $skålen = $kulinarisk->laga($this, $durée);
-        
-        return $skålen->maträtt();
+        return Tartine::avec($this, [$ingredient]);
     }
 }
