@@ -1,0 +1,30 @@
+diff --git a/src/Util/Log/TeamCity.php b/src/Util/Log/TeamCity.php
+index 0efe3438a..8b63ebaab 100644
+--- a/src/Util/Log/TeamCity.php
++++ b/src/Util/Log/TeamCity.php
+@@ -38,6 +38,7 @@
+ use ReflectionException;
+ use SebastianBergmann\Comparator\ComparisonFailure;
+ use Throwable;
++use AKEI\TimeLogger;
+ 
+ /**
+  * @internal This class is not covered by the backward compatibility promise for PHPUnit
+@@ -246,6 +247,8 @@ public function endTestSuite(TestSuite $suite): void
+      */
+     public function startTest(Test $test): void
+     {
++        TimeLogger::resetTimer();
++
+         $testName              = $test->getName();
+         $this->startedTestName = $testName;
+         $params                = ['name' => $testName];
+@@ -266,6 +269,8 @@ public function endTest(Test $test, float $time): void
+     {
+         parent::endTest($test, $time);
+ 
++        $time = TimeLogger::getExecutionTime()??$time;
++
+         $this->printEvent(
+             'testFinished',
+             [
