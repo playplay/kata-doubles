@@ -10,7 +10,7 @@
 >
 > Are we missing something?
 
-> ⚙️ Imagine that we would like to rename the methode in the Four class. What would we need to do?
+> ⚙️ Imagine that we would like to rename the method in the Four class. What would we need to do?
 >
 > How can we make that process simpler?
 > Do it !
