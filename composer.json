@@ -17,7 +17,7 @@
   },
   "require": {
     "php": "^8.1",
-    "akei/kulinarisk": "1.0",
+    "akei/kulinarisk": "2.0.1",
     "cweagans/composer-patches": "^1.7"
   },
   "repositories": [

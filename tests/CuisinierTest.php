@@ -4,14 +4,18 @@ declare(strict_types=1);
 
 namespace BurritoFactory;
 
+use AKEI\Kulinarisk;
 use BurritoFactory\Ingredients\Pain;
 use BurritoFactory\Ingredients\PainGrillé;
 use BurritoFactory\Ingredients\Poivron;
 use BurritoFactory\Ingredients\PoivronFondant;
+use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase;
 
 class CuisinierTest extends TestCase
 {
+    use MockeryPHPUnitIntegration;
+
     /**
      * @test
      */
@@ -19,9 +23,11 @@ class CuisinierTest extends TestCase
     {
         $poivron = new Poivron();
 
-        $kulinarisk = new \AKEI\Kulinarisk();
+        $four = \Mockery::mock(Four::class);
 
-        $cuisiner = new Cuisinier($kulinarisk);
+        $cuisiner = new Cuisinier($four);
+
+        $four->allows('cuisson')->andReturn(new PoivronFondant());
 
         $platPréparé = $cuisiner->prépareUnPoivronFondant($poivron);
 
@@ -35,9 +41,11 @@ class CuisinierTest extends TestCase
     {
         $pain = new Pain();
 
-        $kulinarisk = new \AKEI\Kulinarisk();
+        $four = \Mockery::mock(Four::class);
 
-        $cuisiner = new Cuisinier($kulinarisk);
+        $cuisiner = new Cuisinier($four);
+
+        $four->allows('cuisson')->andReturn(new PainGrillé());
 
         $platPréparé = $cuisiner->prépareDuPainGrillé($pain);
 
