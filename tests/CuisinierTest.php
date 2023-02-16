@@ -19,6 +19,7 @@ class CuisinierTest extends TestCase
     {
         $poivron = new Poivron();
 
+        // TODO: mock
         $kulinarisk = new \AKEI\Kulinarisk();
 
         $cuisiner = new Cuisinier($kulinarisk);
