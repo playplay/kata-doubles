@@ -22,15 +22,11 @@ class CuisinierTest extends TestCase
     {
         $poivron = new Poivron();
 
-<<<<<<< Updated upstream
-        // TODO: mock
-        $kulinarisk = new \AKEI\Kulinarisk();
-=======
+
         $kulinarisk = Mockery::mock(\AKEI\Kulinarisk::class);
         $kulinarisk->allows('laga')
             ->withArgs([$poivron, 25])
             ->andReturn(new PoivronFondant());
->>>>>>> Stashed changes
 
         $cuisiner = new Cuisinier($kulinarisk);
 
