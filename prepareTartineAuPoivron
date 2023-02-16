@@ -9,10 +9,8 @@ use BurritoFactory\Cuisinier;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-$kulinarisk = new \BurritoFactory\Fours\KulinariskFour(new Kulinarisk());
-
-$cuisinier = new Cuisinier($kulinarisk);
-
+$four = new \BurritoFactory\Fours\KulinariskFour(new Kulinarisk());
+$cuisinier = new Cuisinier($four);
 $cuisine = new Cuisine($cuisinier);
 
 $tartineAuPoivron = $cuisine->prépareTartineAuPoivron();

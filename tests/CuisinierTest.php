@@ -12,7 +12,7 @@ use Mockery;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 
-class CuisinierTest extends TestCase
+final class CuisinierTest extends TestCase
 {
     use ProphecyTrait;
     /**
@@ -21,14 +21,11 @@ class CuisinierTest extends TestCase
     public function prépare_des_poivrons_fondants_avec_un_four(): void
     {
         $poivron = new Poivron();
-
-
-        $kulinarisk = Mockery::mock(Four::class);
-        $kulinarisk->allows('cuire')
+        $four = Mockery::mock(Four::class);
+        $four->allows('cuire')
             ->withArgs([$poivron, 25])
             ->andReturn(new PoivronFondant());
-
-        $cuisiner = new Cuisinier($kulinarisk);
+        $cuisiner = new Cuisinier($four);
 
         $platPréparé = $cuisiner->prépareUnPoivronFondant($poivron);
 
@@ -41,16 +38,12 @@ class CuisinierTest extends TestCase
     public function prépare_du_pain_grillé_avec_un_four(): void
     {
         $pain = new Pain();
-
         $four = $this->prophesize(Four::class);
-
         $four->cuire($pain, 2)->willReturn(new PainGrillé());
-
         $cuisiner = new Cuisinier($four->reveal());
 
         $platPréparé = $cuisiner->prépareDuPainGrillé($pain);
 
         $this->assertEquals(new PainGrillé(), $platPréparé);
     }
-
 }
