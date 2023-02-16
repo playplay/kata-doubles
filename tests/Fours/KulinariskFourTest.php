@@ -4,6 +4,7 @@ namespace BurritoFactory\Fours;
 
 use AKEI\Kulinarisk;
 use BurritoFactory\Ingredients\Poivron;
+use BurritoFactory\Ingredients\PoivronFondant;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
@@ -23,5 +24,15 @@ final class KulinariskFourTest extends TestCase
         $four->cuire($poivron, 25);
 
         $kulinariskSpy->shouldHaveReceived('laga')->with($poivron, 25);
+    }
+
+    public function testItReallyCooks(): void
+    {
+        $four = new KulinariskFour(new Kulinarisk());
+        $poivron = new Poivron();
+
+        $plat = $four->cuire($poivron, 25);
+
+        $this->assertInstanceOf(PoivronFondant::class, $plat);
     }
 }
