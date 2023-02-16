@@ -4,23 +4,22 @@ declare(strict_types=1);
 
 namespace BurritoFactory;
 
-use AKEI\Kulinarisk;
 use BurritoFactory\Ingredients\Pain;
 use BurritoFactory\Ingredients\Poivron;
 
 final class Cuisinier
 {
     public function __construct(
-        private readonly Kulinarisk $kulinarisk,
+        private readonly Four $four,
     ) {}
 
     public function prépareUnPoivronFondant(Poivron $poivron)
     {
-        return $this->kulinarisk->laga($poivron, 25);
+        return $this->four->cuire($poivron, 25);
     }
 
     public function prépareDuPainGrillé(Pain $pain)
     {
-        return $this->kulinarisk->laga($pain, 2);
+        return $this->four->cuire($pain, 2);
     }
 }

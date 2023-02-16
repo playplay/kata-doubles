@@ -23,8 +23,8 @@ class CuisinierTest extends TestCase
         $poivron = new Poivron();
 
 
-        $kulinarisk = Mockery::mock(\AKEI\Kulinarisk::class);
-        $kulinarisk->allows('laga')
+        $kulinarisk = Mockery::mock(Four::class);
+        $kulinarisk->allows('cuire')
             ->withArgs([$poivron, 25])
             ->andReturn(new PoivronFondant());
 
@@ -42,11 +42,11 @@ class CuisinierTest extends TestCase
     {
         $pain = new Pain();
 
-        $kulinarisk = $this->prophesize(\AKEI\Kulinarisk::class);
+        $four = $this->prophesize(Four::class);
 
-        $kulinarisk->laga($pain, 2)->willReturn(new PainGrillé());
+        $four->cuire($pain, 2)->willReturn(new PainGrillé());
 
-        $cuisiner = new Cuisinier($kulinarisk->reveal());
+        $cuisiner = new Cuisinier($four->reveal());
 
         $platPréparé = $cuisiner->prépareDuPainGrillé($pain);
 
