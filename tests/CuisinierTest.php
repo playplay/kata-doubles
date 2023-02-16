@@ -8,10 +8,13 @@ use BurritoFactory\Ingredients\Pain;
 use BurritoFactory\Ingredients\PainGrillé;
 use BurritoFactory\Ingredients\Poivron;
 use BurritoFactory\Ingredients\PoivronFondant;
+use Mockery;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class CuisinierTest extends TestCase
 {
+    use ProphecyTrait;
     /**
      * @test
      */
@@ -19,8 +22,15 @@ class CuisinierTest extends TestCase
     {
         $poivron = new Poivron();
 
+<<<<<<< Updated upstream
         // TODO: mock
         $kulinarisk = new \AKEI\Kulinarisk();
+=======
+        $kulinarisk = Mockery::mock(\AKEI\Kulinarisk::class);
+        $kulinarisk->allows('laga')
+            ->withArgs([$poivron, 25])
+            ->andReturn(new PoivronFondant());
+>>>>>>> Stashed changes
 
         $cuisiner = new Cuisinier($kulinarisk);
 
@@ -36,9 +46,11 @@ class CuisinierTest extends TestCase
     {
         $pain = new Pain();
 
-        $kulinarisk = new \AKEI\Kulinarisk();
+        $kulinarisk = $this->prophesize(\AKEI\Kulinarisk::class);
 
-        $cuisiner = new Cuisinier($kulinarisk);
+        $kulinarisk->laga($pain, 2)->willReturn(new PainGrillé());
+
+        $cuisiner = new Cuisinier($kulinarisk->reveal());
 
         $platPréparé = $cuisiner->prépareDuPainGrillé($pain);
 
