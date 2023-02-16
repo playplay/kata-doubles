@@ -9,7 +9,7 @@ use BurritoFactory\Cuisinier;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-$kulinarisk = new Kulinarisk();
+$kulinarisk = new \BurritoFactory\Fours\KulinariskFour(new Kulinarisk());
 
 $cuisinier = new Cuisinier($kulinarisk);
 
