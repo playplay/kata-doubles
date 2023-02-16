@@ -58,5 +58,10 @@
         "./patches/patch.diff"
       ]
     }
+  },
+  "config": {
+    "allow-plugins": {
+      "cweagans/composer-patches": true
+    }
   }
 }
